@@ -2,8 +2,8 @@
 #include <vector>
 #include <string>
 #include <set>
-#include "BubbleSort.h"
 #include "InsertionSort.h"
+#include "BubbleSort.h"
 #include "SelectionSort.h"
 #include "QuickSort.h"
 #include "MergeSort.h"

@@ -1,11 +1,8 @@
 #pragma once
 #include <vector>
-#include <string>
-
-
+#include <algorithm>
 template <typename T>
-class BubbleSort {
+class BucketSort {
 public:
 	void sort(std::vector<std::vector<T>>& data, int columnIndex);
-
 };

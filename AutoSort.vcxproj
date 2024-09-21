@@ -127,16 +127,29 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\BucketSort.cpp" />
+    <ClCompile Include="src\MergeSort.cpp" />
     <ClCompile Include="src\BubbleSort.cpp" />
     <ClCompile Include="src\InsertionSort.cpp" />
     <ClCompile Include="src\QuickSort.cpp" />
+    <ClCompile Include="src\RadixSort.cpp" />
+    <ClCompile Include="src\SelectionSort.cpp" />
     <ClCompile Include="src\SortingManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\BucketSort.h" />
+    <ClInclude Include="src\MergeSort.h" />
     <ClInclude Include="src\BubbleSort.h" />
     <ClInclude Include="src\InsertionSort.h" />
     <ClInclude Include="src\QuickSort.h" />
+    <ClInclude Include="src\RadixSort.h" />
+    <ClInclude Include="src\SelectionSort.h" />
     <ClInclude Include="src\SortingManager.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".gitattributes" />
+    <None Include=".gitignore" />
+    <None Include="README.md" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

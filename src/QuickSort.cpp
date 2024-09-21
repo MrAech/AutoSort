@@ -1,7 +1,7 @@
 #include "QuickSort.h"
 
 template <typename T>
-void QuickSort<T>::sort(std::vector<T>& data, int columnIndex) {
+void QuickSort<T>::sort(std::vector<std::vector<T>>& data, int columnIndex) {
 	quickSort(data, 0, data.size() - 1, columnIndex);
 }
 
