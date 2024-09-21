@@ -128,6 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\BucketSort.cpp" />
+    <ClCompile Include="src\test1.cpp" />
     <ClCompile Include="src\MergeSort.cpp" />
     <ClCompile Include="src\BubbleSort.cpp" />
     <ClCompile Include="src\InsertionSort.cpp" />
