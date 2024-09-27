@@ -1,123 +1,81 @@
-#include "SortingManager.h"
+#include "./headers/SortingManager.h"
 
-template <typename T>
-void SortingManager::sort(std::vector<std::vector<T>>& data, int columnIndex, DataType dataType) {
-    size_t size = data.size();
-    bool isNearlySorted = checkIfNearlySorted(data, columnIndex);
-    bool hasDuplicates = checkForDuplicates(data, columnIndex);
-
-    switch (dataType) {
-    case DataType::STRING:
-        if (size < 1000) {
-            if (isNearlySorted) {
-                InsertionSort<T>().sort(data, columnIndex);
-            }
-            else if (hasDuplicates) {
-                BubbleSort<T>().sort(data, columnIndex);
-            }
-            else {
-                SelectionSort<T>().sort(data, columnIndex);
-            }
-        }
-        else if (size < 10000) {
-            MergeSort<T>().sort(data, columnIndex);
-        }
-        else {
-            QuickSort<T>().sort(data, columnIndex);
-        }
-        break;
-
-    case DataType::INT:
-        if (size < 1000) {
-            if (isNearlySorted) {
-                InsertionSort<T>().sort(data, columnIndex);
-            }
-            else if (hasDuplicates) {
-                BubbleSort<T>().sort(data, columnIndex);
-            }
-            else {
-                SelectionSort<T>().sort(data, columnIndex);
-            }
-        }
-        else if (size < 10000) {
-            MergeSort<T>().sort(data, columnIndex);
-        }
-        else {
-            RadixSort<T>().sort(data, columnIndex);
-        }
-        break;
-
-    case DataType::FLOAT:
-        if (size < 1000) {
-            if (isNearlySorted) {
-                InsertionSort<T>().sort(data, columnIndex);
-            }
-            else if (hasDuplicates) {
-                BubbleSort<T>().sort(data, columnIndex);
-            }
-            else {
-                SelectionSort<T>().sort(data, columnIndex);
-            }
-        }
-        else if (size < 10000) {
-            QuickSort<T>().sort(data, columnIndex);
-        }
-        else {
-            BucketSort<T>().sort(data, columnIndex);
-        }
-        break;
-
-    case DataType::DOUBLE:
-        if (size < 1000) {
-            if (isNearlySorted) {
-                InsertionSort<T>().sort(data, columnIndex);
-            }
-            else if (hasDuplicates) {
-                BubbleSort<T>().sort(data, columnIndex);
-            }
-            else {
-                SelectionSort<T>().sort(data, columnIndex);
-            }
-        }
-        else if (size < 10000) {
-            MergeSort<T>().sort(data, columnIndex);
-        }
-        else {
-            RadixSort<T>().sort(data, columnIndex);
-        }
-        break;
-    }
-}
-
-template <typename T>
-bool SortingManager::checkIfNearlySorted(const std::vector<std::vector<T>>& data, int columnIndex) {
-    int outOfOrderCount = 0;
+template<typename T>
+void SortingManager::determineSortMethod(std::vector<T>& data) {
     size_t size = data.size();
 
-    for (size_t i = 1; i < size; ++i) {
-        if (data[i - 1][columnIndex] > data[i][columnIndex]) {
-            outOfOrderCount++;
+    if constexpr (std::is_same_v<T, int>) {
+        if (size < 1000) {
+            if (Helpers::isNearlySorted(data)) {
+                InsertionSort::sort(data);
+            }
+            else if (Helpers::hasDuplicates(data)) {
+                BubbleSort::sort(data);
+            }
+            else {
+                SelectionSort::sort(data);
+            }
+        }
+        else if (size < 10000) {
+            MergeSort::sort(data);
+        }
+        else {
+            RadixSort::sort(data); // Use RadixSort for large arrays of integers
         }
     }
-
-    // If 10% or less elements are out of order, consider it nearly sorted
-    return (outOfOrderCount <= 0.1 * size);
-}
-
-template <typename T>
-bool SortingManager::checkForDuplicates(const std::vector<std::vector<T>>& data, int columnIndex) {
-    std::set<T> uniqueValues;
-
-    for (const auto& row : data) {
-        uniqueValues.insert(row[columnIndex]);
+    else if constexpr (std::is_same_v<T, float> || std::is_same_v<T, double>) {
+        if (size < 1000) {
+            if (Helpers::isNearlySorted(data)) {
+                InsertionSort::sort(data);
+            }
+            else if (Helpers::hasDuplicates(data)) {
+                BubbleSort::sort(data);
+            }
+            else {
+                SelectionSort::sort(data);
+            }
+        }
+        else if (size < 10000) {
+            QuickSort::sort(data); // For larger floats/doubles, use QuickSort
+        }
+        else {
+            BucketSort::sort(data); // For very large floats/doubles, use BucketSort
+        }
     }
-
-    // If the number of unique elements is less than the size, there are duplicates
-    return uniqueValues.size() < data.size();
+    else if constexpr (std::is_same_v<T, std::string>) {
+        if (size < 1000) {
+            if (Helpers::isNearlySorted(data)) {
+                InsertionSort::sort(data);
+            }
+            else if (Helpers::hasDuplicates(data)) {
+                BubbleSort::sort(data);
+            }
+            else {
+                SelectionSort::sort(data);
+            }
+        }
+        else if (size < 10000) {
+            MergeSort::sort(data); // For strings, you can choose MergeSort
+        }
+        else {
+            QuickSort::sort(data); // Or QuickSort for larger strings
+        }
+    }
 }
 
-// Explicit template instantiation
-template void SortingManager::sort(std::vector<std::vector<std::string>>& data, int columnIndex, DataType dataType);
-template void SortingManager::sort(std::vector<std::vector<int>>& data, int columnIndex, DataType dataType);
-template void SortingManager::sort(std::vector<std::vector<float>>& data, int columnIndex, DataType dataType);
-template void SortingManager::sort(std::vector<std::vector<double>>& data, int columnIndex, DataType dataType);
+template<typename T>
+void SortingManager::sort(std::vector<T>& data) {
+    determineSortMethod(data);
+}
+
+template<typename T>
+void SortingManager::sortCSVData(const std::vector<std::string>& csvData) {
+    auto convertedData = Helpers::convertStringsToTypes<T>(csvData);
+    sort(convertedData);
+}
+
+// Explicit template instantiation for supported types
+template void SortingManager::sort<int>(std::vector<int>& data);
+template void SortingManager::sort<float>(std::vector<float>& data);
+template void SortingManager::sort<double>(std::vector<double>& data);
+template void SortingManager::sort<std::string>(std::vector<std::string>& data);

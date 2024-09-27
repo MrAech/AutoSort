@@ -15,57 +15,72 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\BubbleSort.cpp">
+    <ClCompile Include="src\Sorts\BubbleSort.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\InsertionSort.cpp">
+    <ClCompile Include="src\Sorts\InsertionSort.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\QuickSort.cpp">
+    <ClCompile Include="src\Sorts\QuickSort.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\SortingManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\MergeSort.cpp">
+    <ClCompile Include="src\Sorts\MergeSort.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\RadixSort.cpp">
+    <ClCompile Include="src\Sorts\RadixSort.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\BucketSort.cpp">
+    <ClCompile Include="src\Sorts\BucketSort.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\SelectionSort.cpp">
+    <ClCompile Include="src\Sorts\SelectionSort.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\test1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Helpers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\BubbleSort.h">
+    <ClInclude Include="src\headers\BubbleSort.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\InsertionSort.h">
+    <ClInclude Include="src\headers\InsertionSort.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\QuickSort.h">
+    <ClInclude Include="src\headers\QuickSort.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\SortingManager.h">
+    <ClInclude Include="src\headers\SortingManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\MergeSort.h">
+    <ClInclude Include="src\headers\MergeSort.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\RadixSort.h">
+    <ClInclude Include="src\headers\RadixSort.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\BucketSort.h">
+    <ClInclude Include="src\headers\BucketSort.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\SelectionSort.h">
+    <ClInclude Include="src\headers\SelectionSort.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\headers\Helpers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\headers\GUI.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
